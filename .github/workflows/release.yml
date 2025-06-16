@@ -34,6 +34,7 @@ jobs:
       contents: write
       pages: read
     with:
+      mod_release: ${{ inputs.publish_curseforge || inputs.publish_modrinth || inputs.publish_github }}
       hexdoc_release: ${{ inputs.publish_hexdoc }}
       dry_run: ${{ inputs.dry_run }}
 
