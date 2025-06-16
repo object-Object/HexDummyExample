@@ -30,8 +30,12 @@ env:
 jobs:
   build:
     uses: ./.github/workflows/build.yml
+    permissions:
+      contents: write
+      pages: read
     with:
       hexdoc_release: ${{ inputs.publish_hexdoc }}
+      deploy_pages: ${{ inputs.publish_hexdoc && !inputs.dry_run }}
 
   publish-mod:
     needs: build

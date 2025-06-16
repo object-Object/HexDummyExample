@@ -10,6 +10,9 @@ on:
       hexdoc_release:
         type: boolean
         default: false
+      deploy_pages:
+        type: boolean
+        default: false
   workflow_dispatch:
 
 permissions:
@@ -156,7 +159,7 @@ jobs:
       pages: read
     outputs:
       pages-url: ${{ steps.build.outputs.pages-url }}
-      deploy: ${{ github.event_name != 'pull_request' && (contains(fromJson(env.HEXDOC_BRANCHES), github.ref_name) || inputs.hexdoc_release) }}
+      deploy: ${{ github.event_name != 'pull_request' && (contains(fromJson(env.HEXDOC_BRANCHES), github.ref_name) || inputs.deploy_pages) }}
     steps:
       - uses: actions/checkout@v4
 
