@@ -1,14 +1,14 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
 # https://copier.readthedocs.io/en/stable/updating/#never-change-the-answers-file-manually
-_commit: v2.0.1
+_commit: v2.0.1-1-g63870bd
 _src_path: gh:FallingColors/hexdummy
 advanced: false
 description: Hex Dummy Example addon for Hex Casting
 display_name: Hex Dummy Example
 github_repo: HexDummyExample
 github_user: object-Object
+java_package: io.github.objectobject.hexdummyexample
 mappings_name: Mojmap
 minecraft_version_in_mod_version: true
 mod_version: 0.1.0
 modid: hexdummyexample
-package: io.github.objectobject.hexdummyexample
