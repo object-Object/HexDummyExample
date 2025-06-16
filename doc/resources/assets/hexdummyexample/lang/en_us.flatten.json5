@@ -1,0 +1,8 @@
+{
+  hexdoc: {
+    hexdummyexample: {
+      title: "Hex Dummy Example Book",
+      description: "Hex Dummy Example addon for Hex Casting",
+    },
+  }
+}
