@@ -37,6 +37,7 @@ jobs:
       mod_release: ${{ inputs.publish_curseforge || inputs.publish_modrinth || inputs.publish_github }}
       hexdoc_release: ${{ inputs.publish_hexdoc }}
       dry_run: ${{ inputs.dry_run }}
+      skip_tests: true
 
   publish-mod:
     needs: build

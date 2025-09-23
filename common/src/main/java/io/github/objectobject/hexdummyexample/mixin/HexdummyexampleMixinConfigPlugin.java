@@ -1,4 +1,4 @@
-package io.github.objectobject.hexdummyexample.forge.mixin;
+package io.github.objectobject.hexdummyexample.mixin;
 
 import io.github.objectobject.hexdummyexample.Hexdummyexample;
 import org.objectweb.asm.tree.ClassNode;
@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.Set;
 
 // disable MixinDatagenMain if we're not running the datagen task, since it's not necessary at any other time
-public class ForgeMixinConfigPlugin implements IMixinConfigPlugin {
+public class HexdummyexampleMixinConfigPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (mixinClassName.equals("io.github.objectobject.hexdummyexample.forge.mixin.MixinDatagenMain")) {
+        if (mixinClassName.equals("io.github.objectobject.hexdummyexample.mixin.MixinDatagenMain")) {
             var shouldApply = System.getProperty("hexdummyexample.apply-datagen-mixin", "false").equals("true");
             if (shouldApply) {
-                Hexdummyexample.LOGGER.warn("Applying scuffed datagen mixin. This should not happen if not running datagen!");
+                Hexdummyexample.LOGGER.warn("Applying datagen mixin to {}. This should not happen if not running datagen!", targetClassName);
             }
             return shouldApply;
         }

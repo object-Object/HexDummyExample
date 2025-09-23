@@ -6,7 +6,9 @@
   "client": [
   ],
   "mixins": [
+    "MixinDatagenMain"
   ],
+  "plugin": "io.github.objectobject.hexdummyexample.mixin.HexdummyexampleMixinConfigPlugin",
   "injectors": {
     "defaultRequire": 1
   }

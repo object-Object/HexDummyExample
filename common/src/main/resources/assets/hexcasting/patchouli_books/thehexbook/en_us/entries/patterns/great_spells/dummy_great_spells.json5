@@ -1,0 +1,16 @@
+{
+  name: "hexdummyexample.book.patterns.great_spells.dummy_great_spells",
+  category: "hexcasting:patterns/great_spells",
+  icon: "minecraft:birch_sign",
+  advancement: "hexcasting:root",
+  pages: [
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexdummyexample:congratulate/great",
+      anchor: "hexdummyexample:congratulate/great",
+      input: "entity",
+      output: "",
+      text: "hexdummyexample.book.patterns.great_spells.dummy_great_spells.congratulate/great",
+    },
+  ],
+}
