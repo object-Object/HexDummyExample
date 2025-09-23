@@ -6,6 +6,7 @@ import subprocess
 if __name__ == "__main__":
     for command in [
         ["uvx", "copier", "update", "--vcs-ref", "v2", "--skip-answered"],
+        ["uv", "sync"],
         ["git", "add", "."],
         ["git", "commit", "-m", "Update template"],
         ["git", "push"],
