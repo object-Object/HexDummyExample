@@ -1,16 +1,15 @@
 package io.github.objectobject.hexdummyexample
 
-import io.github.objectobject.hexdummyexample.config.HexdummyexampleConfig
-import io.github.objectobject.hexdummyexample.config.HexdummyexampleConfig.GlobalConfig
+import io.github.objectobject.hexdummyexample.config.HexdummyexampleClientConfig
 import me.shedaniel.autoconfig.AutoConfig
 import net.minecraft.client.gui.screens.Screen
 
 object HexdummyexampleClient {
     fun init() {
-        HexdummyexampleConfig.initClient()
+        HexdummyexampleClientConfig.init()
     }
 
     fun getConfigScreen(parent: Screen): Screen {
-        return AutoConfig.getConfigScreen(GlobalConfig::class.java, parent).get()
+        return AutoConfig.getConfigScreen(HexdummyexampleClientConfig.GlobalConfig::class.java, parent).get()
     }
 }

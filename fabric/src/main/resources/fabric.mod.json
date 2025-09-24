@@ -23,6 +23,10 @@
       "adapter": "kotlin",
       "value": "io.github.objectobject.hexdummyexample.fabric.FabricHexdummyexampleClient"
     }],
+    "server": [{
+      "adapter": "kotlin",
+      "value": "io.github.objectobject.hexdummyexample.fabric.FabricHexdummyexampleServer"
+    }],
     "fabric-datagen": [{
       "adapter": "kotlin",
       "value": "io.github.objectobject.hexdummyexample.fabric.datagen.FabricHexdummyexampleDatagen"

@@ -1,7 +1,6 @@
 package io.github.objectobject.hexdummyexample.config
 
 import dev.architectury.event.events.client.ClientPlayerEvent
-import dev.architectury.event.events.common.PlayerEvent
 import me.shedaniel.autoconfig.AutoConfig
 import me.shedaniel.autoconfig.ConfigData
 import me.shedaniel.autoconfig.ConfigHolder
@@ -12,22 +11,15 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry.Gui.TransitiveObject
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer.GlobalData
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer
-import net.minecraft.network.FriendlyByteBuf
+import net.minecraft.world.InteractionResult
 import io.github.objectobject.hexdummyexample.Hexdummyexample
-import io.github.objectobject.hexdummyexample.networking.msg.MsgSyncConfigS2C
 
-object HexdummyexampleConfig {
+object HexdummyexampleClientConfig {
     @JvmStatic
     lateinit var holder: ConfigHolder<GlobalConfig>
 
     @JvmStatic
-    val client get() = holder.config.client
-
-    @JvmStatic
-    val server get() = syncedServerConfig ?: holder.config.server
-
-    // only used on the client, probably
-    private var syncedServerConfig: ServerConfig? = null
+    val config get() = holder.config.client
 
     fun init() {
         holder = AutoConfig.register(
@@ -35,52 +27,33 @@ object HexdummyexampleConfig {
             PartitioningSerializer.wrap(::Toml4jConfigSerializer),
         )
 
-        PlayerEvent.PLAYER_JOIN.register { player ->
-            MsgSyncConfigS2C(holder.config.server).sendToPlayer(player)
+        // when we change the server config in the client gui, also send it to the server config class
+        holder.registerSaveListener { _, config ->
+            HexdummyexampleServerConfig.holder.config = HexdummyexampleServerConfig.GlobalConfig(config.server)
+            InteractionResult.PASS
         }
-    }
 
-    fun initClient() {
+        // when we leave a server, clear our local copy of its config
         ClientPlayerEvent.CLIENT_PLAYER_QUIT.register { _ ->
-            syncedServerConfig = null
+            HexdummyexampleServerConfig.onSyncConfig(null)
         }
-    }
-
-    fun onSyncConfig(serverConfig: ServerConfig) {
-        syncedServerConfig = serverConfig
     }
 
     @Config(name = Hexdummyexample.MODID)
     class GlobalConfig : GlobalData() {
-        @Category("client")
+        @Category("server")
         @TransitiveObject
         val client = ClientConfig()
 
+        // this should only be used inside of this class; use HexdummyexampleServerConfig.config to access the server-side config in other code
         @Category("server")
         @TransitiveObject
-        val server = ServerConfig()
+        val server = HexdummyexampleServerConfig.ServerConfig()
     }
 
     @Config(name = "client")
     class ClientConfig : ConfigData {
         @Tooltip
-        val clientConfigOption: Boolean = true
-    }
-
-    @Config(name = "server")
-    class ServerConfig : ConfigData {
-        @Tooltip
-        var serverConfigOption: Int = 64
-            private set
-
-        fun encode(buf: FriendlyByteBuf) {
-            buf.writeInt(serverConfigOption)
-        }
-
-        companion object {
-            fun decode(buf: FriendlyByteBuf) = ServerConfig().apply {
-                serverConfigOption = buf.readInt()
-            }
-        }
+        val dummyClientConfigOption: Boolean = true
     }
 }

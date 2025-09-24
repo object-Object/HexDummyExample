@@ -13,6 +13,7 @@ class ForgeHexdummyexample {
             EventBuses.registerModEventBus(Hexdummyexample.MODID, this)
             addListener(ForgeHexdummyexampleClient::init)
             addListener(ForgeHexdummyexampleDatagen::init)
+            addListener(ForgeHexdummyexampleServer::init)
         }
         Hexdummyexample.init()
     }
