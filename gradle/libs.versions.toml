@@ -41,7 +41,7 @@ trinkets = "3.7.0"
 
 cardinalComponents = "5.2.1"
 serializationHooks = "0.4.99999"
-mixinExtras = "0.4.1"
+mixinExtras = "0.5.0"
 clothConfig = "11.1.106"
 modMenu = "7.1.0"
 inline = "1.20.1-1.0.1"
@@ -112,7 +112,7 @@ asm-tree     = { module="org.ow2.asm:asm-tree", version.ref="asm" }
 asm-util     = { module="org.ow2.asm:asm-util", version.ref="asm" }
 
 
-serializationHooks = { module="libs:serialization-hooks", version.ref="serializationHooks" }
+serializationHooks = { module="io.github.tropheusj:serialization-hooks", version.ref="serializationHooks" }
 
 [plugins]
 kotlin-jvm = { id="org.jetbrains.kotlin.jvm", version.ref="kotlin" }

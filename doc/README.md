@@ -34,7 +34,7 @@ For local testing, create a file called `.env` in the repo root following this t
 ```sh
 GITHUB_REPOSITORY=object-Object/HexDummyExample
 GITHUB_SHA=main
-GITHUB_PAGES_URL=https://github.com/object-Object/HexDummyExample
+GITHUB_PAGES_URL=https://object-object.github.io/HexDummyExample
 ```
 
 Useful commands:
