@@ -1,6 +1,6 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
 # https://copier.readthedocs.io/en/stable/updating/#never-change-the-answers-file-manually
-_commit: v2.2.3-4-gc4447d8
+_commit: v2.2.3-5-gf05e5a6
 _src_path: gh:FallingColors/hexdummy
 advanced: false
 description: Hex Dummy Example addon for Hex Casting
